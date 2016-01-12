@@ -27,4 +27,10 @@ class Simulation
   def current_robot_position
     robot.position
   end
+
+  def next_robot_position
+    current_robot_position.merge(robot.range) do |_, current_position, range|
+      current_position + range
+    end
+  end
 end

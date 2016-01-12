@@ -94,4 +94,20 @@ describe Simulation do
       simulation.current_robot_position
     end
   end
+
+  describe "#next_robot_position" do
+    before do
+      simulation.robot.x_position = 1
+      simulation.robot.y_position = 1
+      simulation.robot.orientation = Robot::EAST
+    end
+
+    it "returns the robots next table position for a move action" do
+      expect(simulation.next_robot_position).to eq({
+        x_position: 2,
+        y_position: 1,
+        orientation: Robot::EAST,
+      })
+    end
+  end
 end

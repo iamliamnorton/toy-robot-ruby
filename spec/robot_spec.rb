@@ -20,4 +20,19 @@ describe Robot do
       })
     end
   end
+
+  describe "#range" do
+    it "returns a hash for range correlating to orientation" do
+      robot = Robot.new
+      robot.orientation = Robot::NORTH
+
+      expect(robot.range).to eq({ y_position: 1 })
+    end
+
+    it "returns nil if orientation is not set" do
+      robot = Robot.new
+
+      expect(robot.range).to eq(nil)
+    end
+  end
 end

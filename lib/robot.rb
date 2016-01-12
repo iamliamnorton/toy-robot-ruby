@@ -17,4 +17,17 @@ class Robot
       orientation: orientation,
     }
   end
+
+  def range
+    case orientation
+    when NORTH
+      { y_position: 1 }
+    when SOUTH
+      { y_position: -1 }
+    when WEST
+      { x_position: -1 }
+    when EAST
+      { x_position: 1 }
+    end
+  end
 end
