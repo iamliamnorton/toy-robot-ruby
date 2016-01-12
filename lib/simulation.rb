@@ -28,9 +28,24 @@ class Simulation
     robot.position
   end
 
-  def next_robot_position
-    current_robot_position.merge(robot.range) do |_, current_position, range|
-      current_position + range
+  def next_robot_position(action = :move)
+    case action
+    when :move
+      current_robot_position.merge(robot.range) do |_, current_position, range|
+        current_position + range
+      end
+    when :left
+      current_robot_position.merge(
+        orientation: Robot::ORIENTATIONS[
+          Robot::ORIENTATIONS.index(robot.orientation) - 1
+        ]
+      )
+    when :right
+      current_robot_position.merge(
+        orientation: Robot::ORIENTATIONS[
+          Robot::ORIENTATIONS.index(robot.orientation) + 1
+        ]
+      )
     end
   end
 end

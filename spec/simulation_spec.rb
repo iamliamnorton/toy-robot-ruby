@@ -102,11 +102,35 @@ describe Simulation do
       simulation.robot.orientation = Robot::EAST
     end
 
-    it "returns the robots next table position for a move action" do
+    it "defaults to a move action" do
       expect(simulation.next_robot_position).to eq({
         x_position: 2,
         y_position: 1,
         orientation: Robot::EAST,
+      })
+    end
+
+    it "returns the robots next table position for a move action" do
+      expect(simulation.next_robot_position(:move)).to eq({
+        x_position: 2,
+        y_position: 1,
+        orientation: Robot::EAST,
+      })
+    end
+
+    it "returns the robots next table position for a left action" do
+      expect(simulation.next_robot_position(:left)).to eq({
+        x_position: 1,
+        y_position: 1,
+        orientation: Robot::NORTH,
+      })
+    end
+
+    it "returns the robots next table position for a right action" do
+      expect(simulation.next_robot_position(:right)).to eq({
+        x_position: 1,
+        y_position: 1,
+        orientation: Robot::SOUTH,
       })
     end
   end
