@@ -1,6 +1,25 @@
 Toy Robot Simulator - Ruby
 ==========================
 
+This is my implementation of the common Toy Robot Simulator coding test. It is a Ruby 2.3 app running in Docker.
+
+## Usage
+
+I've provided a `Makefile` for ease of running Docker commands.
+
+    $ make build run
+
+This command will get you a command line to interact with the robot.
+
+    $ make build test
+
+This command will run the test suite.
+
+
+## Notes
+
+I've used the command pattern to interpret user input and create Ruby objects representing these commands. The commands know about a Simulation object which is used to interact with the Table and Robot objects.
+
 Specification
 ==========================
 
