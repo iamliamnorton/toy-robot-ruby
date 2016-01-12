@@ -66,4 +66,32 @@ describe Simulation do
       simulation.place_robot(x_position: 1, y_position: 2, orientation: Robot::EAST)
     end
   end
+
+  describe "#robot_placed?" do
+    it "calls #orientation on the robot" do
+      expect(simulation.robot).to receive(:orientation)
+
+      simulation.robot_placed?
+    end
+
+    it "returns true when #orentation exists" do
+      simulation.robot.orientation = "anything"
+
+      expect(simulation.robot_placed?).to eq(true)
+    end
+
+    it "returns false when #orentation doesn't exist" do
+      simulation.robot.orientation = nil
+
+      expect(simulation.robot_placed?).to eq(false)
+    end
+  end
+
+  describe "#current_robot_position" do
+    it "calls #position on the robot" do
+      expect(simulation.robot).to receive(:position)
+
+      simulation.current_robot_position
+    end
+  end
 end

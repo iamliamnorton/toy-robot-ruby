@@ -19,4 +19,12 @@ class Simulation
     robot.y_position = y_position
     robot.orientation = orientation
   end
+
+  def robot_placed?
+    !!robot.orientation
+  end
+
+  def current_robot_position
+    robot.position
+  end
 end
